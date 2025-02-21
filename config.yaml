@@ -21,8 +21,8 @@ cop:
   #callback:
   #  url: "https://b6dd-2620-101-f000-7c0-00-c34.ngrok-free.app"
 
-  callback:
-    url: "http://165.22.237.253:8080"
+callback:
+  url: "http://165.22.237.253:8080"
 
 
 
