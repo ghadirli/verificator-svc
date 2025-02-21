@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/go-chi/cors"
 	"github.com/rarimo/verificator-svc/internal/config"
 	"github.com/rarimo/verificator-svc/internal/data/pg"
 	"github.com/rarimo/verificator-svc/internal/service/ctx"
@@ -12,6 +13,14 @@ import (
 
 func (s *service) router(cfg config.Config) chi.Router {
 	r := chi.NewRouter()
+
+    r.Use(cors.Handler(cors.Options{
+            AllowedOrigins:   []string{"*"}, // Or specify a domain: []string{"http://localhost:3000"}
+            AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+            AllowedHeaders:   []string{"Accept", "Content-Type", "Authorization"},
+            AllowCredentials: true,
+            // You can set more options here if needed.
+        }))
 
 	r.Use(
 		ape.RecoverMiddleware(s.log),

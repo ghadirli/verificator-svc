@@ -3,10 +3,10 @@ log:
   disable_sentry: true
 
 db:
-  url: pg_url
+  url: "postgres://myuser:mypassword@localhost:5432/mydatabase?sslmode=disable"
 
 listener:
-  addr: :8000
+  addr: :8080
 
 cop:
   disabled: true
@@ -15,8 +15,12 @@ cop:
   service_name: verificator-svc
   service_port: 80
 
+#callback:
+#  url: "http://localhost:8000"
+
 callback:
-  url: "http://localhost:8000"
+  url: "https://b6dd-2620-101-f000-7c0-00-c34.ngrok-free.app"
+
 
 verifier:
   verification_key_path: "./proof_keys/passport.json"
